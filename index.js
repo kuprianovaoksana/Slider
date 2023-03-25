@@ -55,6 +55,8 @@ function initSlider(){
             'beforebegin',
             `<div class="dots dot${i}"></div>`
             )
+            
+            document.querySelector(`.dot${i}`).dataset.index=i;
 
             document.querySelector(`.dot${i}`).addEventListener('click', ()=>{
                 currentIndex=i;
@@ -140,7 +142,8 @@ function moveSlider(){
     document.querySelector(`.n${currentIndex}`).classList.add("active");
 
     document.querySelector(".dots-active").classList.remove("dots-active");
-    document.querySelector(`.dot${currentIndex}`).classList.add("dots-active");
+    document.querySelector(`.dots[data-index="${currentIndex}"]`).classList.add("dots-active");
+    // document.querySelector(`.dot${currentIndex}`).classList.add("dots-active");
 
     document.querySelector(".navigation-list__item_active").classList.remove("navigation-list__item_active");
     document.querySelector(`.item${currentIndex}`).classList.add("navigation-list__item_active");
